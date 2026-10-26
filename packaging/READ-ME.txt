@@ -1,0 +1,31 @@
+utilBox
+
+One mailbox icon sits at the top right of the screen, next to Control Center.
+
+Click the mailbox to open the clipboard, with the scratchpad directly under it.
+Click the mailbox again to hide both. The scratchpad stays on top of other apps,
+browsers, fullscreen windows, and Spaces until you hide it. Shrink it to a
+Scratchpad pill and drag that anywhere. Notes stay on this Mac until you delete them.
+
+Drag a file, some text, or an image onto the mailbox and the clipboard opens
+so you can drop it in. Move the drag away and the clipboard closes.
+Hovering the mailbox with nothing on the cursor does not open it.
+
+Click an item in the clipboard, then press Command-V to paste it.
+Click outside the clipboard, or press Esc, to close it and leave the scratchpad open.
+Drop text, images, or files onto the open clipboard to keep them there.
+Pin an item to hold onto it. The clipboard keeps 100 recent copies and 50 pins.
+
+Install
+1. Drag utilBox into the Applications folder.
+2. The first time you open it, macOS says the developer cannot be verified.
+   Click Done, then right-click utilBox, choose Open, then Open.
+   On newer macOS: System Settings, Privacy & Security, Open Anyway.
+   That question is asked once. Later launches open normally.
+3. Or double-click "Install utilBox.command". It copies the app into
+   Applications and clears the download quarantine flag. macOS may ask once
+   about that installer. The app itself is unsigned, so Apple cannot skip
+   every warning without a paid developer account.
+
+Quit and Open at Login are under the ··· button, or right-click the mailbox.
+Clipboard history and notes stay on this Mac, in your Library folder. Nothing is uploaded.

@@ -1,0 +1,29 @@
+name: Build DMG
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  dmg:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: utilBox-dmg
+          path: dist/utilBox.dmg
+      - name: Publish the disk image
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" dist/utilBox.dmg \
+            --title "utilBox ${GITHUB_REF_NAME}" \
+            --notes "Unsigned macOS 13+ disk image. The first time you open utilBox, right-click it and choose Open. See the README."
