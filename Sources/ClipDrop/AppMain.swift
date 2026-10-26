@@ -37,6 +37,10 @@ enum AppFocus {
     }
 }
 
+// The macOS SDK also declares `struct flock`, which hides the POSIX function of the same name.
+@_silgen_name("flock")
+private func lockFileDescriptor(_ fileDescriptor: Int32, _ operation: Int32) -> Int32
+
 enum InstanceLock {
     // Held open for the life of the process. Closing it would release the lock.
     static var fd: Int32 = -1
@@ -45,7 +49,7 @@ enum InstanceLock {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("app.utilbox.lock")
         fd = Darwin.open(url.path, O_CREAT | O_RDWR, mode_t(0o644))
         if fd < 0 { return true }
-        if Darwin.flock(fd, LOCK_EX | LOCK_NB) != 0 {
+        if lockFileDescriptor(fd, LOCK_EX | LOCK_NB) != 0 {
             return false
         }
         return true
